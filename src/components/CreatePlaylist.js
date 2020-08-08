@@ -22,7 +22,7 @@ class CreatePlaylist extends Component {
     }
     
     getUser(){
-        fetch('http://localhost:3000/session_id',{
+        fetch('http://localhost:3000/users/session_id',{
           headers:{
             Authorization: `Bearer ${localStorage.getItem('mixtape_token')}`
           }
