@@ -23,7 +23,7 @@ class TrackByID extends Component{
     }
 
     getPlaylist(){
-        fetch(`https://share-a-mixtape.herokuapp.com/playlists/${this.props.match.params.playlist_id}`)
+        fetch(`http://localhost:3000/playlists/${this.props.match.params.playlist_id}`)
         .then(response=>response.json())
         .then(json=>this.setState({playlist: json}))
         .catch(error=>console.error(error))

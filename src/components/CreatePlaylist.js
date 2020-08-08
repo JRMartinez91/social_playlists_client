@@ -22,7 +22,7 @@ class CreatePlaylist extends Component {
     }
     
     getUser(){
-        fetch('https://share-a-mixtape.herokuapp.com/session_id',{
+        fetch('http://localhost:3000/session_id',{
           headers:{
             Authorization: `Bearer ${localStorage.getItem('mixtape_token')}`
           }
@@ -60,7 +60,7 @@ class CreatePlaylist extends Component {
 
         //this will be a multi step process
         //first a POST request will create a new playlist
-        fetch('https://share-a-mixtape.herokuapp.com/playlists',{
+        fetch('http://localhost:3000/playlists',{
             body: JSON.stringify({
                 title:this.state.title,
                 //get the ID of the currently logged in user   
@@ -88,7 +88,7 @@ class CreatePlaylist extends Component {
                 //else, post it.
                 if(this.state.tracks[i]['title'+i] && this.state.tracks[i]['url'+i]){
                     console.log("loop: track post "+i);
-                    fetch('https://share-a-mixtape.herokuapp.com/tracks',{
+                    fetch('http://localhost:3000/tracks',{
                         body: JSON.stringify({
                             title: this.state.tracks[i]['title'+i],
                             artist: this.state.tracks[i]['artist'+i],

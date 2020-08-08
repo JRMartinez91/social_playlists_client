@@ -11,7 +11,7 @@ class PlaylistByID extends Component{
     }
 
     checkLogin(){
-        fetch('https://share-a-mixtape.herokuapp.com/users/session_id',{
+        fetch('http://localhost:3000/users/session_id',{
           headers:{
             Authorization: `Bearer ${localStorage.getItem('mixtape_token')}`
           }
@@ -25,7 +25,7 @@ class PlaylistByID extends Component{
     }
 
     getPlaylist(){
-        fetch(`https://share-a-mixtape.herokuapp.com/${this.props.match.params.id}`)
+        fetch(`http://localhost:3000/${this.props.match.params.id}`)
             .then(response=>response.json())
             .then(json => this.setState({playlist: json}))
             .catch(error => console.error(error))
