@@ -24,7 +24,7 @@ class TagSearch extends Component {
     }
 
     getPlaylists(searchTerm){
-        fetch(`http://localhost:3000/playlists/tagsearch/${searchTerm}`)
+        fetch(`https://share-a-mixtape.herokuapp.com/playlists/tagsearch/${searchTerm}`)
         .then(response=>response.json())
         .then(json => this.setState({playlists: json}))
         .catch(error => console.error(error))
@@ -32,7 +32,7 @@ class TagSearch extends Component {
     }
 
     getAllTags(){
-        fetch('http://localhost:3000/playlists/alltags')
+        fetch('https://share-a-mixtape.herokuapp.com/playlists/alltags')
         .then(response=>response.json())
         .then(jsonTags => this.setState({alltags: jsonTags}))
         .catch(error=>console.error(error))

@@ -10,7 +10,7 @@ class Home extends Component{
 
     getPlaylists(){
         //Home page retrieves Playlists and displays them in chronological order
-        fetch('http://localhost:3000/playlists/recent')
+        fetch('https://share-a-mixtape.herokuapp.com/playlists/recent')
         .then(response=>response.json())
         .then(json => this.setState({recentPlaylists: json}))
         .catch(error => console.error(error))

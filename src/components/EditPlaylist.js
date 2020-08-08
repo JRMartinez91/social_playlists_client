@@ -23,7 +23,7 @@ class EditPlaylist extends Component {
     }
 
     getUser(){
-        fetch('http://localhost:3000/users/session_id',{
+        fetch('https://share-a-mixtape.herokuapp.com/users/session_id',{
             headers:{
               Authorization: `Bearer ${localStorage.getItem('mixtape_token')}`
             }
@@ -38,7 +38,7 @@ class EditPlaylist extends Component {
 
     getPlaylist(){
         console.log("get playlist")
-        fetch(`http://localhost:3000/playlists/${this.props.match.params.id}`)
+        fetch(`https://share-a-mixtape.herokuapp.com/playlists/${this.props.match.params.id}`)
         .then(response=>response.json())
         .then(json => {
             this.setState({
@@ -82,7 +82,7 @@ class EditPlaylist extends Component {
         //this will be a multi step process
         //first a POST request will create a new playlist
         console.log(this.state.tags);
-        fetch(`http://localhost:3000/playlists/${this.state.playlist.id}`,{
+        fetch(`https://share-a-mixtape.herokuapp.com/${this.state.playlist.id}`,{
             body: JSON.stringify({
                 title:this.state.playlist.title,
                 //get the ID of the currently logged in user   
@@ -131,7 +131,7 @@ class EditPlaylist extends Component {
                 //if title or URL is blank, ignore
                 //else, post it.
                 if(this.state.playlist.tracks[i]['title'] && this.state.playlist.tracks[i]['url']){
-                    fetch(`http://localhost:3000/tracks/${this.state.playlist.tracks[i].id}`,{
+                    fetch(`https://share-a-mixtape.herokuapp.com/${this.state.playlist.tracks[i].id}`,{
                         body: JSON.stringify({
                             title: this.state.playlist.tracks[i]['title'],
                             artist: this.state.playlist.tracks[i]['artist'],
@@ -157,7 +157,7 @@ class EditPlaylist extends Component {
                 //else, post it.
                 if(this.state.tracks[i]['title'] && this.state.tracks[i]['url']){
                     console.log("POST: track ",i+1,this.state.playlist.tracks[i].title)
-                    fetch('http://localhost:3000/tracks',{
+                    fetch('https://share-a-mixtape.herokuapp.com/tracks',{
                         body: JSON.stringify({
                             title: this.state.tracks[i]['title'],
                             artist: this.state.tracks[i]['artist'],
@@ -184,7 +184,7 @@ class EditPlaylist extends Component {
         // event.preventDefault();
         let answer = prompt(`Are you sure you want to delete ${this.state.playlist.tracks[index].title}? Y/N`)
         if(answer=="y"||answer=="Y"){
-            fetch(`http://localhost:3000/tracks/${this.state.playlist.tracks[index].id}`,{
+            fetch(`https://share-a-mixtape.herokuapp.com/${this.state.playlist.tracks[index].id}`,{
                 method:'DELETE'
             })
             // this.forceUpdate();

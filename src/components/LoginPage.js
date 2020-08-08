@@ -13,7 +13,7 @@ class LoginPage extends Component{
 
     handleLogin(event){
         event.preventDefault();
-        fetch('http://localhost:3000/users/login',{
+        fetch('https://share-a-mixtape.herokuapp.com/users/login',{
             body: JSON.stringify({user:{
                 username:this.state.username,
                 password:this.state.password
@@ -33,7 +33,7 @@ class LoginPage extends Component{
 
     handleCreateUser(event){
         event.preventDefault();
-        fetch('http://localhost:3000/users',{
+        fetch('https://share-a-mixtape.herokuapp.com/users',{
             body: JSON.stringify({
                 username:this.state.new_username,
                 password:this.state.new_password

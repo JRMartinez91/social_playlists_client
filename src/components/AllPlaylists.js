@@ -10,7 +10,7 @@ class AllPlaylists extends Component{
     }
 
     getPlaylists(){
-        fetch(`http://localhost:3000/playlists/`)
+        fetch(`https://share-a-mixtape.herokuapp.com/playlists/`)
         .then(response=>response.json())
         .then(json => this.setState({playlists: json}))
         .catch(error => console.error(error))

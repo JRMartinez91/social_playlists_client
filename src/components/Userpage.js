@@ -16,14 +16,14 @@ class Userpage extends Component{
 
 
     getUser(){
-        fetch(`http://localhost:3000/users/${this.props.match.params.id}`)
+        fetch(`https://share-a-mixtape.herokuapp.com/users/${this.props.match.params.id}`)
         .then(response=>response.json())
         .then(json => this.setState({user: json}))
         .catch(error=>console.error(error));
     }
 
     checkLogin(){
-        fetch('http://localhost:3000/users/session_id',{
+        fetch('https://share-a-mixtape.herokuapp.com/users/session_id',{
             headers:{
               Authorization: `Bearer ${localStorage.getItem('mixtape_token')}`
             }
@@ -41,7 +41,7 @@ class Userpage extends Component{
          if(this.state.login){
              let answer = prompt(`Are you sure you want to delete ${title}? Y/N`)
              if(answer=="y"||answer=="Y"){
-                 fetch(`http://localhost:3000/playlists/${id}`,{
+                 fetch(`https://share-a-mixtape.herokuapp.com/playlists/${id}`,{
                      method:'DELETE'
                  })
              }

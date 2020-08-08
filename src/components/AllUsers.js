@@ -15,7 +15,7 @@ class AllUsers extends Component{
     }
 
     getUsers(){
-        fetch('http://localhost:3000/users')
+        fetch('https://share-a-mixtape.herokuapp.com/users')
         .then(response=>response.json())
         .then(json=>this.setState({users:json}))
         .catch(error=>console.error(error))
